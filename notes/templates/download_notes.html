@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container mt-5">
+    <h2 class="text-center">DOWNLOAD NOTES</h2>
+    <hr>
+    <table class="table table=bordered" id="myTable">
+        <thead>
+            <tr>
+                <th>Sr. NO</th>
+                <th>Uploading By</th>
+                <th>Uploading Date</th>
+                <th>Branch</th>
+                <th>Subject</th>
+                <th>Download Notes</th>
+                <th>File Type</th>
+            </tr>
+            {% for i in notes %}
+            <tr>
+                
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.user.username}}</td>
+                    <td>{{i.uploadingdate}}</td>
+                    <td>{{i.branch}}</td>
+                    <td>{{i.subject}}</td>
+                    <td><a href="{{i.notesfile.url}}" download>{{i.notesfile}}</a></td>
+                    <td>{{i.filetype}}</td>
+                
+            </tr>
+            {% endfor %}
+        </thead>
+    </table>
+</div>
+
+    
+{% endblock %}

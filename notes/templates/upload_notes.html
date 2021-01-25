@@ -1,0 +1,63 @@
+{% extends 'usernavigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-sm-6">
+            <h2 class="text-center">UPLOAD NOTES</h2>
+            <hr>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="">Branch</label>
+                <select name="branch" id="" class="form-control">
+                    <option value="">---Select Branch---</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electronic">Electronic</option>
+                    <option value="Electrical">Electrical</option>
+                </select>
+                <label for="">Subject</label>
+                <input type="text" name="subject" class="form-control" placeholder="Enter Subject">
+                <label for="">Notes File</label>
+                <input type="file" name="notesfile" class="form-control" >
+                <label for="">File Type</label>
+                <select name="filetype" id="" class="form-control">
+                    <option value="">---Select File Type---</option>
+                    <option value="PDF">PDF</option>
+                    <option value="PPT">PPT</option>
+                    <option value="DOC/DOCX">DOC/DOCX</option>
+                    <option value="Image">Image</option>
+                    <option value="ZIP/RAR">ZIP/RAR</option>
+                </select>
+                <label>Description</label>
+                <textarea name="description" class="form-control">
+                    
+                </textarea>
+             
+                <input type="submit" class="btn btn-danger mt-2" value="SUBMIT">
+            </form>
+        </div>
+        <div class="col-sm-4">
+            
+            <img src="{% static 'images/nitish.jpg'%}" alt="admin" class="img-thumbnail">
+            
+        </div>
+    </div>
+</div>
+{% ifequal error "no" %}
+<script>
+    alert('Notes Uploaded Successfully');
+
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong, Try Again');
+</script>
+{% endifequal %}
+
+{% endblock %}
