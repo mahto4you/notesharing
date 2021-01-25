@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import *
 from django.contrib.auth import authenticate,logout,login
 from datetime import date
+from .models import Notes, Signup
 
 # Create your views here.
 def about(request):
